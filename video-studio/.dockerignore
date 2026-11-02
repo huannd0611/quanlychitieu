@@ -1,0 +1,15 @@
+# Only runtime files enter the build context; API keys, local data and tests do not.
+**
+!Dockerfile
+!server.py
+!video_provider.py
+!reference_planner.py
+!mp4_export.py
+!index.html
+!style.css
+!studio.js
+!reference.js
+!auto.js
+!auto.css
+!assets/
+!assets/**

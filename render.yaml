@@ -1,0 +1,24 @@
+# Render Blueprint for a personal demo.
+# The repository root render.yaml is used by the one-click deploy button.
+# Keep this copy in sync when deploying from a custom Blueprint Path.
+services:
+  - type: web
+    name: luma-video-studio
+    runtime: docker
+    plan: free
+    region: singapore
+    rootDir: video-studio
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /healthz
+    envVars:
+      - key: PORT
+        value: "10000"
+      - key: LUMA_APP_PASSWORD
+        generateValue: true
+      - key: LUMA_VIDEO_KEY
+        sync: false
+      - key: LUMA_AI_KEY
+        sync: false
+      - key: LUMA_AI_MODEL
+        value: gpt-4.1-mini

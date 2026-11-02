@@ -6,13 +6,16 @@ import io
 import json
 import os
 from pathlib import Path
+import sys
 import threading
 import unittest
 from unittest.mock import patch
 from urllib import error, request
 
 
-SPEC = importlib.util.spec_from_file_location("studio_server", Path(__file__).resolve().parents[1] / "server.py")
+APP_ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(APP_ROOT))
+SPEC = importlib.util.spec_from_file_location("studio_server", APP_ROOT / "server.py")
 studio = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(studio)
 

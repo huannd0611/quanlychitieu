@@ -12,7 +12,9 @@ import unittest
 from unittest.mock import patch
 
 
-SPEC = importlib.util.spec_from_file_location("hosting_studio_server", Path(__file__).resolve().parents[1] / "server.py")
+APP_ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(APP_ROOT))
+SPEC = importlib.util.spec_from_file_location("hosting_studio_server", APP_ROOT / "server.py")
 studio = importlib.util.module_from_spec(SPEC)
 sys.modules[SPEC.name] = studio
 SPEC.loader.exec_module(studio)
